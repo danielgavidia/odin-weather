@@ -6,3 +6,6 @@ CHECK 2. Map data into sidebar
 CHECK 3. Make button so that on click a current city has been chosen
 CHECK 4. Make search functionality for adding new cities
 CHECK 5. Fix dashboard header
+
+To do 6/21:
+1. Fix sidebar formatting

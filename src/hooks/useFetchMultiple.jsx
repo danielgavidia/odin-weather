@@ -19,11 +19,12 @@ const filterJSON = (item) => {
 		return {
 			city: item.location.name,
 			region: item.location.region,
-			localtime_epoch: item.location.localtime_epoch,
+			localtime: item.location.localtime,
 			conditions: item.current.condition.code,
 			temp_current: item.current.temp_f,
 			temp_high: item.forecast.forecastday[0].day.maxtemp_f,
 			temp_low: item.forecast.forecastday[0].day.mintemp_f,
+			is_day: item.current.is_day,
 		};
 	}
 };

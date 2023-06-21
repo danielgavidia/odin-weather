@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { APIKey } from './API/APIKey';
 import useFetch from './hooks/useFetch';
 import useFetchMultiple from './hooks/useFetchMultiple';
 import useSearch from './hooks/useSearch';
-import { APIKey } from './APIKey';
 import Navbar from './components/navbar/Navbar';
 import Sidebar from './components/sidebar/Sidebar';
 import Dashboard from './components/dashboard/Dashboard';
-
-// process part 2
-// 1. Create custom hook for adding new cities
 
 function App() {
 	// days
@@ -29,20 +26,17 @@ function App() {
 	const [data] = useFetch(request);
 
 	// modify url API array
-	const [urls, setUrls] = useState([]);
+	const [urls, setUrls] = useState([
+		`http://api.weatherapi.com/v1/forecast.json?key=${APIKey}&q=New York&days=${days}&aqi=yes&alerts=yes`,
+	]);
 	const handleSetUrls = (item) => {
 		const newUrl = `http://api.weatherapi.com/v1/forecast.json?key=${APIKey}&q=${item}&days=${days}&aqi=yes&alerts=yes`;
 		if (urls.includes(newUrl) == false) {
 			setUrls([...urls, newUrl]);
 		}
 	};
-	console.log(urls);
 
 	// using custom hook for multiple requests
-	const urlsArr = [
-		`http://api.weatherapi.com/v1/forecast.json?key=${APIKey}&q=Sayreville&days=${days}&aqi=yes&alerts=yes`,
-		`http://api.weatherapi.com/v1/forecast.json?key=${APIKey}&q=Toronto&days=${days}&aqi=yes&alerts=yes`,
-	];
 	const [responses] = useFetchMultiple(urls);
 	console.log(responses);
 

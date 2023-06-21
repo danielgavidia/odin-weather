@@ -18,8 +18,8 @@ const Navbar = ({ searchTerm, setSearchTerm, searchResults, handleSetUrls }) => 
 					<div>
 						{searchResults != null ? (
 							<div className='fixed bg-white'>
-								{searchResults.map((i) => (
-									<div>
+								{searchResults.map((i, index) => (
+									<div key={index}>
 										<button
 											onClick={() =>
 												handleSetUrls(
