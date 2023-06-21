@@ -1,2 +1,8 @@
 Process
 
+To do:
+CHECK 1. Develop function for fetching multiple API calls and clean up data
+CHECK 2. Map data into sidebar
+CHECK 3. Make button so that on click a current city has been chosen
+CHECK 4. Make search functionality for adding new cities
+CHECK 5. Fix dashboard header

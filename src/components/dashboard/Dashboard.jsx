@@ -1,6 +1,7 @@
 import React from 'react';
 import DashboardHourly from './DashboardHourly';
 import DashboardForecast from './DashboardForecast';
+import DashboardHeader from './DashboardHeader';
 import DashboardAirQuality from './DashboardAirQuality';
 import DashboardHumidity from './DashboardHumidity';
 import DashboardPressure from './DashboardPressure';
@@ -15,8 +16,7 @@ const Dashboard = ({ item }) => {
 		<>
 			<div className='flex flex-col justify-center bg-white h-[calc(100vh-50px)] w-[calc(100vw-300px)] overflow-y-scroll'>
 				<div className='border-2 border-black'>
-					<div>New York</div>
-					<div>74° | Cloudy</div>
+					<DashboardHeader item={item.dashboard_header} />
 				</div>
 				<div className='border-2 border-black'>
 					<DashboardHourly item={item.dashboard_hourly} />

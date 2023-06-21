@@ -3,7 +3,9 @@ import React from 'react';
 const DashboardHeader = ({ item }) => {
 	return (
 		<>
-			<div></div>
+			<div>{item.location_name}</div>
+			<div>{item.temp_f}</div>
+			<div>{item.condition_code}</div>
 		</>
 	);
 };
