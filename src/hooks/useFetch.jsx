@@ -20,6 +20,8 @@ const getOutput = (item) => {
 				location_name: item.location.name,
 				last_updated_epoch: item.current.last_updated_epoch,
 				temp_f: item.current.temp_f,
+				temp_high: item.forecast.forecastday[0].day.maxtemp_f,
+				temp_low: item.forecast.forecastday[0].day.mintemp_f,
 				is_day: item.current.is_day,
 				condition_code: item.current.condition.code,
 			},
@@ -71,6 +73,7 @@ const getDBHourly = (item) => {
 const getHourlyDataForOneDay = (item) => {
 	const arr = item.map((i) => ({
 		time_epoch: i.time_epoch,
+		time: i.time,
 		temp_f: i.temp_f,
 		condition_code: i.condition.code,
 		is_day: i.is_day,

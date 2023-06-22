@@ -8,4 +8,12 @@ CHECK 4. Make search functionality for adding new cities
 CHECK 5. Fix dashboard header
 
 To do 6/21:
-1. Fix sidebar formatting
+CHECK 1. Fix sidebar formatting: 
+     CHECK 1. Make time display dynamic
+     CHECK 2. Add padding
+     CHECK 3. Make conditions smaller
+
+CHECK 2. Fix dashboard header formatting
+3. Fix dashboard hourly formatting
+     1. Add weather icons
+     2. Format time, temperature, and spacing
