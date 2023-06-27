@@ -1,10 +1,11 @@
 import React from 'react';
 import { weatherCodes } from '../../API/weatherCodes';
 import { weatherCodesMap } from '../../API/weatherCodesMap';
+import { timeFormatSidebar } from '../../API/timeFormats';
 
 const SidebarButton = ({ item, handleSetCity }) => {
 	const cond = weatherCodesMap([item.conditions], item.is_day, weatherCodes);
-	const t = time(item.localtime);
+	const t = timeFormatSidebar(item.localtime);
 
 	return (
 		<>
@@ -42,21 +43,6 @@ const SidebarButton = ({ item, handleSetCity }) => {
 			</div>
 		</>
 	);
-};
-
-const time = (item) => {
-	const timeSlice = item.slice(10);
-	const timeX = () => {
-		if (timeSlice.length > 5) {
-			const hour = item.slice(10, 13);
-			const minute = item.slice(14, 16);
-			const hourX = (Number(hour) - 12).toString();
-			return hourX.concat(':', minute, ' PM');
-		} else {
-			return timeSlice.concat(' AM');
-		}
-	};
-	return timeX();
 };
 
 export default SidebarButton;

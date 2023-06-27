@@ -19,13 +19,22 @@ const DashboardHourly = ({ item }) => {
 
 const Hour = ({ item }) => {
 	const t = time(item.time);
-	const icon = weatherCodesMapIcon([item.condition_code], weatherCodes);
+	const icon = weatherCodesMapIcon([item.condition_code], item.is_day, weatherCodes);
 	return (
 		<>
 			<div className='flex flex-col border-2 border-black'>
 				<div>{t}</div>
 				<div>
 					<img src={icon} alt='x' className='w-[40px]' />
+				</div>
+				<div>
+					{item.chance_of_rain >= 30 ? (
+						<div className='text-blue-400'>
+							{Math.round(item.chance_of_rain / 10) * 10}%
+						</div>
+					) : (
+						<div></div>
+					)}
 				</div>
 				<div>{Math.round(item.temp_f)}°</div>
 			</div>

@@ -28,13 +28,13 @@ const getOutput = (item) => {
 			dashboard_hourly: hourly_forecast,
 			dashboard_forecast: db_forecast,
 			air_quality: {
-				co: item.forecast.forecastday[0].day.air_quality.co,
-				no2: item.forecast.forecastday[0].day.air_quality.no2,
-				o3: item.forecast.forecastday[0].day.air_quality.o3,
-				pm2_5: item.forecast.forecastday[0].day.air_quality.pm2_5,
-				pm10: item.forecast.forecastday[0].day.air_quality.pm10,
-				us_epa_index: item.forecast.forecastday[0].day.air_quality.us_epa_index,
-				gb_defra_index: item.forecast.forecastday[0].day.air_quality.gb_defra_index,
+				co: item.current.air_quality.co,
+				no2: item.current.air_quality.no2,
+				o3: item.current.air_quality.o3,
+				pm2_5: item.current.air_quality.pm2_5,
+				pm10: item.current.air_quality.pm10,
+				us_epa_index: item.current.air_quality.us_epa_index,
+				gb_defra_index: item.current.air_quality.gb_defra_index,
 			},
 			uv_index: {
 				uv: item.forecast.forecastday[0].day.uv,
@@ -64,12 +64,6 @@ const getOutput = (item) => {
 	}
 };
 
-const getDBHourly = (item) => {
-	const arr = getHourlyDataForMultipleDays(item);
-	const filteredArr = arr.filter((x) => x.time_epoch > Date.now() * 0.001);
-	return filteredArr.slice(0, 24);
-};
-
 const getHourlyDataForOneDay = (item) => {
 	const arr = item.map((i) => ({
 		time_epoch: i.time_epoch,
@@ -86,6 +80,12 @@ const getHourlyDataForOneDay = (item) => {
 const getHourlyDataForMultipleDays = (item) => {
 	const arr = item.map((i) => getHourlyDataForOneDay(i.hour));
 	return arr.flat();
+};
+
+const getDBHourly = (item) => {
+	const arr = getHourlyDataForMultipleDays(item);
+	const filteredArr = arr.filter((x) => x.time_epoch > Date.now() * 0.001);
+	return filteredArr.slice(0, 24);
 };
 
 const getDBForecast = (item) => {
